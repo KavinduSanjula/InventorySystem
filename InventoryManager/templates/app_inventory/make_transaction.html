@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block titleblock %}
+	<title>Make Transaction</title>
+{% endblock %}
+
+{% block start_block %}
+
+<h1>Make Transaction</h1>
+
+<hr>
+
+<form action="" method="POST">
+	{% csrf_token %}
+	{{ form.as_p }}
+	<input class="btn btn-dark" type="submit" value="Add">
+</form>
+
+<hr>
+
+{% endblock %}

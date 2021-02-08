@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block titleblock %}
+	<title>Transactions</title>
+{% endblock %}
+
+{% block start_block %}
+
+<h1>Transactions</h1>
+<hr>
+	<div class="serch_form">
+		<form action="" method="POST">
+			{% csrf_token %}
+			<lable>Category:</lable> 
+			<select name="category" >
+				<option value="all">all</option>
+				{% for cat in categories %}
+				<option value="{{ cat.category_name }}">{{ cat.category_name }}</option>
+				{% endfor %}	
+			</select>
+			<lable>Start Date:</lable> <input type="date" name="start_date" id="">
+			<lable>End Date:</lable> <input type="date" name="end_date" id="">
+			<input class="btn btn-dark btn-sm" type="submit" value="Serch">
+		</form>
+	</div>
+<hr>
+	{% if transactions %}
+		<table>
+			<tr>
+				<th>Transaction ID</th>
+				<th>Item</th>
+				<th>Quantity</th>
+				<th>Transaction Time</th>
+				<th>Transaction Type</th>
+				<th>User</th>
+				<th></th>
+			</tr>
+			{% for transaction in transactions %}
+			    <tr>
+			    	<td>{{ transaction.id }}</td>
+			    	<td>{{ transaction.item }}</td>
+			    	<td>{{ transaction.qty }}</td>
+			    	<td>{{ transaction.transaction_time }}</td>
+			    	<td>{{ transaction.transaction_type }}</td>
+			    	<td><a href="#">{{ transaction.user }}</a></td>
+			    	<td><a class="btn btn-danger btn-sm" href="{% url 'delete-transaction' transaction.id %}">revert</a></td>
+			    </tr>
+			{% endfor %}
+		</table>
+	{% else %}
+		<p>No Transactions!</p>
+	{% endif %}
+
+<hr>
+
+{% endblock %}

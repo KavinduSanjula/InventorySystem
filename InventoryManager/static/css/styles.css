@@ -1,0 +1,23 @@
+th,td{
+	padding: 15px;
+}
+
+th{
+	background-color: #ccc;
+}
+
+li{
+	background-color: #222;
+	margin-left: 3px;
+}
+
+.user_info{
+	color:white;
+	text-align: right;
+	width:300px;
+	float: right;
+}
+
+.serch_form{
+	text-align: right;
+}

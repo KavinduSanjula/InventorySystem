@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block titleblock %}
+	<title>Inventory</title>
+{% endblock %}
+
+{% block start_block %}
+
+<h1>Inventory</h1>
+
+<hr>
+	{% if inventory %}
+		<table>
+			<tr>
+				<th>Stock ID</th>
+				<th>Item</th>
+				<th>Category</th>
+				<th>Quantity</th>
+				<th></th>
+				<th></th>
+			</tr>
+			{% for stock in inventory %}
+				<tr>
+					<td>{{ stock.id }}</td>
+					<td>{{ stock.item }}</td>
+					<td>{{ stock.item.category }}</td>
+					<td>{{ stock.qty }}</td>
+					<td><a href="{% url 'update-stock' stock.id %}"><Button class="btn btn-info btn-sm">Update</Button></a></td>
+					<td><a href="{% url 'delete-stock' stock.id %}"><Button class="btn btn-danger btn-sm">Delete</Button></a></td>
+				</tr>
+			{% endfor %}
+		</table>
+	{% else %}
+		<p>No items in inventory!</p>
+	{% endif %}
+
+<hr>
+
+{% endblock %}

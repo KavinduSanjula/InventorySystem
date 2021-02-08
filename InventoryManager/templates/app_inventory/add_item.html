@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block titleblock %}
+	<title>Add Item</title>
+{% endblock %}
+
+{% block start_block %}
+
+
+<h1>Add Item</h1>
+
+<hr>
+
+<div class="jumbotron">
+	<form action="" method="POST">
+		{% csrf_token %}
+		{{ form.as_p }}
+		<input class="btn btn-dark" type="submit" value="Add">
+	</form>
+</div>
+
+<hr>
+
+
+
+{% endblock %}
